@@ -8,6 +8,7 @@ public class CricketManagementJavaApr2023Application {
 
 	public static void main(String[] args) {
 		SpringApplication.run(CricketManagementJavaApr2023Application.class, args);
+		System.out.println("Hello");
 	}
 
 }

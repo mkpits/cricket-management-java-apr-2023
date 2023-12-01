@@ -10,7 +10,7 @@ public class CricketManagementJavaApr2023Application {
 
 	{
 		SpringApplication.run(CricketManagementJavaApr2023Application.class, args);
-		System.out.println("Hello");
+		System.out.println("Hell-o");
 	}
 
 }

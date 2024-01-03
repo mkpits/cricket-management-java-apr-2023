@@ -10,32 +10,43 @@ import jakarta.persistence.Table;
 public class UserMaster {
     @Id
     @Column(name = "role_id")
-    private int roleid;
+    private int roleId;
     @Column(name = "role_name")
-    private String rolename;
+    private String roleName;
+    @Column(name = "user_id")
+    private int userId;
 
     public UserMaster(){
 
     }
 
-    public UserMaster(int roleid, String rolename) {
-        this.roleid = roleid;
-        this.rolename = rolename;
+    public UserMaster(int roleId, String roleName, int userId) {
+        this.roleId = roleId;
+        this.roleName = roleName;
+        this.userId = userId;
     }
 
-    public int getRoleid() {
-        return roleid;
+    public int getRoleId() {
+        return roleId;
     }
 
-    public void setRoleid(int roleid) {
-        this.roleid = roleid;
+    public void setRoleId(int roleId) {
+        this.roleId = roleId;
     }
 
-    public String getRolename() {
-        return rolename;
+    public String getRoleName() {
+        return roleName;
     }
 
-    public void setRolename(String rolename) {
-        this.rolename = rolename;
+    public void setRoleName(String roleName) {
+        this.roleName = roleName;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 }

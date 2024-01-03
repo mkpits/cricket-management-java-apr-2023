@@ -1,52 +1,51 @@
 package com.mkpits.cricket.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "state")
 public class State {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "state_id")
-    private int stateid;
+    private int stateId;
     @Column(name = "state_name")
-    private String statename;
-    @Column(name = "country_id")
-    private int countryid;
+    private String stateName;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "country_id")
+    private Country country;
 
     public State(){
 
     }
-
-    public State(int stateid, String statename, int countryid) {
-        this.stateid = stateid;
-        this.statename = statename;
-        this.countryid = countryid;
+    public State(int stateId, String stateName, Country country) {
+        this.stateId = stateId;
+        this.stateName = stateName;
+        this.country=country;
     }
 
-    public int getStateid() {
-        return stateid;
+    public int getStateId() {
+        return stateId;
     }
 
-    public void setStateid(int stateid) {
-        this.stateid = stateid;
+    public void setStateId(int stateId) {
+        this.stateId = stateId;
     }
 
-    public String getStatename() {
-        return statename;
+    public String getStateName() {
+        return stateName;
     }
 
-    public void setStatename(String statename) {
-        this.statename = statename;
+    public void setStateName(String stateName) {
+        this.stateName = stateName;
     }
 
-    public int getCountryid() {
-        return countryid;
+    public Country getCountry() {
+        return country;
     }
 
-    public void setCountryid(int countryid) {
-        this.countryid = countryid;
+    public void setCountry(Country country) {
+        this.country = country;
     }
 }

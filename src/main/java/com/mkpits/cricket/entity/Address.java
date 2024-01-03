@@ -1,43 +1,43 @@
 package com.mkpits.cricket.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "address")
 public class Address {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "address_id")
-    private int addressid;
+    private int addressId;
     private String address1;
     private String address2;
     private String district;
-    @Column(name = "city_id")
-    private String cityid;
     @Column(name = "postal_code")
-    private String postalcode;
+    private String postalCode;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "city_id")
+    private City city;
 
     public Address(){
 
     }
-    public Address(int addressid, String address1, String address2, String district,
-                   String cityid, String postalcode) {
-        this.addressid = addressid;
+
+    public Address(int addressId, String address1, String address2, String district, String postalCode, City city) {
+        this.addressId = addressId;
         this.address1 = address1;
         this.address2 = address2;
         this.district = district;
-        this.cityid = cityid;
-        this.postalcode = postalcode;
+        this.postalCode = postalCode;
+        this.city=city;
     }
 
-    public int getAddressid() {
-        return addressid;
+    public int getAddressId() {
+        return addressId;
     }
 
-    public void setAddressid(int addressid) {
-        this.addressid = addressid;
+    public void setAddressId(int addressId) {
+        this.addressId = addressId;
     }
 
     public String getAddress1() {
@@ -64,19 +64,19 @@ public class Address {
         this.district = district;
     }
 
-    public String getCityid() {
-        return cityid;
+    public String getPostalCode() {
+        return postalCode;
     }
 
-    public void setCityid(String cityid) {
-        this.cityid = cityid;
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
     }
 
-    public String getPostalcode() {
-        return postalcode;
+    public City getCity() {
+        return city;
     }
 
-    public void setPostalcode(String postalcode) {
-        this.postalcode = postalcode;
+    public void setCity(City city) {
+        this.city = city;
     }
 }

@@ -1,86 +1,87 @@
 package com.mkpits.cricket.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 
 import java.sql.Timestamp;
-import java.time.LocalDateTime;
-import java.util.Date;
+
+import java.sql.Date;
 
 @Entity
 @Table(name = "user_details")
 public class UserDetails {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
-    private int userid;
+    private int userId;
     @Column(name = "first_name")
-    private String firstname;
+    private String firstName;
     @Column(name = "last_name")
-    private String lastname;
+    private String lastName;
     @Column(name = "email")
     private String email;
-    @Column(name = "address_id")
-    private int addressid;
     @Column(name = "date_of_birth")
-    private Date dateofbirth;
+    private Date dateOfBirth;
     @Column(name = "mobile_no")
-    private int mobilenumber;
+    private String mobileNumber;
     @Column(name = "gender")
     private String gender;
-    @Column(name = "create_date")
-    private LocalDateTime createdate;
-    @Column(name = "role_id")
-    private int roleid;
-    @Column(name = "last_update")
-    private Timestamp lastupdate;
     @Column(name = "is_deleted")
-    private boolean isdeleted;
+    private boolean isDeleted;
+    @Column(name = "created_by")
+    private String created_By;
+    @Column(name = "updated_by")
+    private String updated_By;
+    @Column(name = "updated_on")
+    @UpdateTimestamp
+    private Timestamp updated_On;
+    @Column(name = "created_on")
+    @CreationTimestamp
+    private Timestamp created_On;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "address_id")
+    private Address address;
 
     public UserDetails() {
     }
 
-    public UserDetails(int userid, String firstname, String lastname, String email,
-                       int addressid, Date dateofbirth, int mobilenumber, String gender,
-                       LocalDateTime createdate, int roleid, Timestamp lastupdate,
-                       boolean isdeleted) {
-        this.userid = userid;
-        this.firstname = firstname;
-        this.lastname = lastname;
+    public UserDetails(String firstName, String lastName, String email, Date dateOfBirth, String mobileNumber, String gender, boolean isDeleted, String created_By, String updated_By,Address address) {
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.email = email;
-        this.addressid = addressid;
-        this.dateofbirth = dateofbirth;
-        this.mobilenumber = mobilenumber;
+        this.dateOfBirth = dateOfBirth;
+        this.mobileNumber = mobileNumber;
         this.gender = gender;
-        this.createdate = createdate;
-        this.roleid = roleid;
-        this.lastupdate = lastupdate;
-        this.isdeleted = isdeleted;
+        this.isDeleted = isDeleted;
+        this.created_By = created_By;
+        this.updated_By = updated_By;
+        this.address=address;
     }
 
-    public int getUserid() {
-        return userid;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setUserid(int userid) {
-        this.userid = userid;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
-    public String getFirstname() {
-        return firstname;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getLastname() {
-        return lastname;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getEmail() {
@@ -91,28 +92,21 @@ public class UserDetails {
         this.email = email;
     }
 
-    public int getAddressid() {
-        return addressid;
+
+    public Date getDateOfBirth() {
+        return dateOfBirth;
     }
 
-    public void setAddressid(int addressid) {
-        this.addressid = addressid;
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 
-    public Date getDateofbirth() {
-        return dateofbirth;
+    public String getMobileNumber() {
+        return mobileNumber;
     }
 
-    public void setDateofbirth(Date dateofbirth) {
-        this.dateofbirth = dateofbirth;
-    }
-
-    public int getMobilenumber() {
-        return mobilenumber;
-    }
-
-    public void setMobilenumber(int mobilenumber) {
-        this.mobilenumber = mobilenumber;
+    public void setMobileNumber(String mobileNumber) {
+        this.mobileNumber = mobileNumber;
     }
 
     public String getGender() {
@@ -123,35 +117,51 @@ public class UserDetails {
         this.gender = gender;
     }
 
-    public LocalDateTime getCreatedate() {
-        return createdate;
+    public boolean isDeleted() {
+        return isDeleted;
     }
 
-    public void setCreatedate(LocalDateTime createdate) {
-        this.createdate = createdate;
+    public void setDeleted(boolean deleted) {
+        isDeleted = deleted;
     }
 
-    public int getRoleid() {
-        return roleid;
+    public String getCreated_By() {
+        return created_By;
     }
 
-    public void setRoleid(int roleid) {
-        this.roleid = roleid;
+    public void setCreated_By(String created_By) {
+        this.created_By = created_By;
     }
 
-    public Timestamp getLastupdate() {
-        return lastupdate;
+    public String getUpdated_By() {
+        return updated_By;
     }
 
-    public void setLastupdate(Timestamp lastupdate) {
-        this.lastupdate = lastupdate;
+    public void setUpdated_By(String updated_By) {
+        this.updated_By = updated_By;
     }
 
-    public boolean isIsdeleted() {
-        return isdeleted;
+    public Timestamp getUpdated_On() {
+        return updated_On;
     }
 
-    public void setIsdeleted(boolean isdeleted) {
-        this.isdeleted = isdeleted;
+    public void setUpdated_On(Timestamp updated_On) {
+        this.updated_On = updated_On;
+    }
+
+    public Timestamp getCreated_On() {
+        return created_On;
+    }
+
+    public void setCreated_On(Timestamp created_On) {
+        this.created_On = created_On;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 }

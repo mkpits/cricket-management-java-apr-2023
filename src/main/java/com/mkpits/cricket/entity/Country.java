@@ -1,41 +1,38 @@
 package com.mkpits.cricket.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "country")
 public class Country {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "country_id")
-    private int countryid;
+    private int countryId;
     @Column(name = "country_name")
-    private String countryname;
+    private String countryName;
 
     public Country(){
 
     }
-
-    public Country(int countryid, String countryname) {
-        this.countryid = countryid;
-        this.countryname = countryname;
+    public Country(int countryId, String countryName) {
+        this.countryId = countryId;
+        this.countryName = countryName;
     }
 
-    public int getCountryid() {
-        return countryid;
+    public int getCountryId() {
+        return countryId;
     }
 
-    public void setCountryid(int countryid) {
-        this.countryid = countryid;
+    public void setCountryId(int countryId) {
+        this.countryId = countryId;
     }
 
-    public String getCountryname() {
-        return countryname;
+    public String getCountryName() {
+        return countryName;
     }
 
-    public void setCountryname(String countryname) {
-        this.countryname = countryname;
+    public void setCountryName(String countryName) {
+        this.countryName = countryName;
     }
 }

@@ -1,6 +1,6 @@
-package com.example.TeamManagementSystem.dao;
+package com.mkpits.cricket.repository;
 
-import com.example.TeamManagementSystem.entity.Team;
+import com.mkpits.cricket.entity.Team;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface TeamRepository extends JpaRepository<Team,Integer> {

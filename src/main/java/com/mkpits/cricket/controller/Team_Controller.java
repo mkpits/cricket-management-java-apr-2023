@@ -1,9 +1,9 @@
-package com.example.TeamManagementSystem.managementController;
+package com.mkpits.cricket.controller;
 
-import com.example.TeamManagementSystem.entity.Players;
-import com.example.TeamManagementSystem.entity.Team;
-import com.example.TeamManagementSystem.service.PlayersService;
-import com.example.TeamManagementSystem.service.TeamService;
+import com.mkpits.cricket.entity.Players;
+import com.mkpits.cricket.entity.Team;
+import com.mkpits.cricket.service.PlayersService;
+import com.mkpits.cricket.service.TeamService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

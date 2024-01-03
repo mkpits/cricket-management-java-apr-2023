@@ -1,9 +1,9 @@
-package com.example.TeamManagementSystem.service;
+package com.mkpits.cricket.service;
 
 
-import com.example.TeamManagementSystem.dao.PlayersRepository;
-import com.example.TeamManagementSystem.entity.Players;
-import com.example.TeamManagementSystem.entity.Team;
+import com.mkpits.cricket.repository.PlayersRepository;
+import com.mkpits.cricket.entity.Players;
+import com.mkpits.cricket.entity.Team;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,4 +1,4 @@
-package com.example.TeamManagementSystem.entity;
+package com.mkpits.cricket.entity;
 
 import jakarta.persistence.*;
 

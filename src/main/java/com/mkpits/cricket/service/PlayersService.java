@@ -1,7 +1,7 @@
-package com.example.TeamManagementSystem.service;
+package com.mkpits.cricket.service;
 
-import com.example.TeamManagementSystem.entity.Players;
-import com.example.TeamManagementSystem.entity.Team;
+import com.mkpits.cricket.entity.Players;
+import com.mkpits.cricket.entity.Team;
 
 import java.util.List;
 

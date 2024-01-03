@@ -1,4 +1,4 @@
-package com.example.TeamManagementSystem.entity;
+package com.mkpits.cricket.entity;
 
 import jakarta.persistence.*;
 
@@ -28,7 +28,7 @@ public class Players {
     public Players() {
     }
 
-    public Players(String first_name, String last_name, Date date_of_birth, String nationality, String city, double percentage_of_fitness, String is_bowler, String is_batsman, String is_all_rounder, String is_wicket_keeper ,Team team) {
+    public Players(String first_name, String last_name, Date date_of_birth, String nationality, String city, double percentage_of_fitness, String is_bowler, String is_batsman, String is_all_rounder, String is_wicket_keeper , Team team) {
         this.first_name = first_name;
         this.last_name = last_name;
         this.date_of_birth = date_of_birth;

@@ -1,5 +1,5 @@
-package com.mkpits.cricket.service;
-
-public interface UserSettingService {
-    public void updateprofile(int usersettingid);
-}
+//package com.mkpits.cricket.service;
+//
+//public interface UserSettingService {
+//    public void updateprofile(int usersettingid);
+//}

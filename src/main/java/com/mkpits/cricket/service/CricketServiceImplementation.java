@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CricketServiceImplementation implements CricketService{
@@ -26,7 +27,12 @@ public class CricketServiceImplementation implements CricketService{
 
     @Override
     public UserDetails updateRecord(Integer user_id) {
-        UserDetails userDetails = userDetailsRepository.findById(user_id).get();
-        return userDetails;
+        Optional<UserDetails> userDetails = userDetailsRepository.findById(user_id);
+        return userDetails.get();
+    }
+
+    @Override
+    public void deleteRecord(Integer user_id) {
+        userDetailsRepository.deleteById(user_id);
     }
 }

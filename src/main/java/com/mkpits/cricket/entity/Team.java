@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "team")
+@Table(name = "teams")
 public class Team {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -13,6 +13,8 @@ public class Team {
     private String team_name;
     private String team_description;
 
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Players> playersList;
 
     public Team() {
     }
@@ -46,5 +48,11 @@ public class Team {
         this.team_description = team_description;
     }
 
+    public List<Players> getPlayersList() {
+        return playersList;
+    }
 
+    public void setPlayersList(List<Players> playersList) {
+        this.playersList = playersList;
+    }
 }

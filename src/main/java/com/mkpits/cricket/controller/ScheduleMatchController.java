@@ -49,7 +49,7 @@ public class ScheduleMatchController {
     }
 
     @GetMapping("/delete")
-    public String deleteRecord(@RequestParam("match_id") int matchId,Model model){
+    public String deleteRecord(@RequestParam("match_id") int matchId){
         MatchDetails matchDetails=matchDetailService.findMatch(matchId);
         matchDetailService.delete(matchId);
         return "redirect:/matches";

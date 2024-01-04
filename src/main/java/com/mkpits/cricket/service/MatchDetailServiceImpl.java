@@ -36,6 +36,7 @@ public class MatchDetailServiceImpl implements MatchDetailService{
     }
 
     @Override
+
     public MatchDetails update(int matchId) {
         MatchDetails matchDetails= matchRepository.findById(matchId).get();
         return matchDetails;

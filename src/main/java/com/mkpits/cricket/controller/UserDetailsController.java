@@ -28,22 +28,28 @@ public class UserDetailsController {
     }
 
     @PostMapping("/saveUserDetails")
-    public String saveUserDetails(UserDetails userDetails){
-        cricketService.saveDetails(userDetails);
+    public String saveUserDetails(@ModelAttribute("userdetails") UserDetails userdetails){
+        cricketService.saveDetails(userdetails);
         return "redirect:/userDetails/displayUserDetails";
     }
 
     @GetMapping("/displayUserDetails")
     public String findAllDetails(Model model){
         List<UserDetails> userDetailsList = cricketService.findAllDetails();
-        model.addAttribute("userdetail",userDetailsList);
+        model.addAttribute("userdetails",userDetailsList);
         return "displayUserDetails";
     }
 
     @GetMapping("/updateUserDetails")
-    public String userFormForUpdate(@RequestParam("user_id") int userId, Model model){
-        UserDetails userDetails = cricketService.updateRecord(userId);
-        model.addAttribute("userdetail",userDetails);
+    public String userFormForUpdate(@RequestParam("user_id") int user_Id, Model model){
+        UserDetails userDetails = cricketService.updateRecord(user_Id);
+        model.addAttribute("userdetails",userDetails);
         return "getUserDetails";
+    }
+
+    @GetMapping("/deleteUserDetail")
+    public String deleteUserDetail(@RequestParam("user_id") int user_Id){
+        cricketService.deleteRecord(user_Id);
+        return "redirect:/userDetails/displayUserDetails";
     }
 }

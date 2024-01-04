@@ -39,7 +39,7 @@
             <td th:text="${users.address.city.state.stateName}"></td>
             <td th:text="${users.address.city.state.country.countryName}"></td>
             <td>
-                <a th:href="@{/userDetails/updateUserDetails(userId=${users.getUserId()})}">
+                <a th:href="@{/userDetails/updateUserDetails(user_id=${users.userId})}">
                     <i class="fa-solid fa-pen-to-square btn btn-success"></i>
                 </a>
             </td>

@@ -19,8 +19,9 @@
     </style>
 </head>
 <body>
+
 <div class="container col-lg-8 mb-4 py-3 px-5 text-dark main">
-    <form th:action="@{/userDetails/saveUserDetails}" method="post" th:object="${userdetails}">
+    <form th:action="@{/userDetails/saveUserDetails}" method="post" th:object="${userdetail}">
         <fieldset>
             <legend>User Details</legend>
             <label>First Name : </label>
@@ -56,7 +57,7 @@
             <input type="text" class="form-control" th:field="*{address.district}" placeholder="Enter district here">
             <br>
             <label>Postal code :</label>
-            <input type="number" class="form-control" th:field="*{address.postalcode}" placeholder="Enter postal code">
+            <input type="number" class="form-control" th:field="*{address.postalCode}" placeholder="Enter postal code">
             <br>
         </fieldset>
         <fieldset>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Match Schedule</title>
+
+    <!--    bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+</head>
+<div style="margin-left: 10px;margin-top: 10px">
+    <h1>Match Schedule</h1>
+</div>
+
+<body>
+<div style="margin-top: 30px;margin-bottom: 10px;margin-left: 50px">
+    <a th:href="@{/add}"> <button type="button" class="btn btn-primary" >Create New Match</button> </a> &nbsp
+
+</div>
+
+<div class="msstyle" style="margin-left: 10px;margin-right: 10px">
+    <table class="table table-striped table-hover">
+        <tr>
+            <td>Match Id</td>
+            <td>Match Name</td>
+            <td>Team 1</td>
+            <td>Team 2</td>
+            <td>Match Date</td>
+            <td>Match Time</td>
+            <td>Match venue</td>
+            <td>Update Match</td>
+            <td>Delete Match</td>
+        </tr>
+
+        <tr th:each="match:${model}">
+            <td th:text="${match.match_id}"></td>
+            <td th:text="${match.match_name}"></td>
+            <td th:text="${match.team1}"></td>
+            <td th:text="${match.team2}"></td>
+            <td th:text="${match.match_date}"></td>
+            <td th:text="${match.match_time}"></td>
+            <td th:text="${match.match_venue}"></td>
+            <td><a th:href="@{/update(match_id=${match.match_id})}"> <button type="button" class="btn btn-primary" >Update</button> </a></td>
+            <td><a th:href="@{/delete(match_id=${match.match_id})}"> <button type="button" class="btn btn-danger" >Delete</button> </a></td>
+        </tr>
+    </table>
+</div>
+
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</html>

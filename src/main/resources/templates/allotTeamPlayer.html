@@ -6,51 +6,38 @@
 </head>
 <body>
 
-<form th:object="${players}" th:action="@{/Save}" method="post">
+<form th:object="${team}" th:action="@{/insertTeams}" method="post">
     <table>
-<!--    <tr><td>Id</td>-->
-<!--        <td><input type="number" th:field="*{player_id}" placeholder="id"></td>-->
-<!--    </tr>-->
-    <tr><td>First Name :</td>
-        <td><input type="text" th:field="*{first_name}" placeholder="Enter Roll Number"></td>
-    </tr>
-    <tr><td>Last Name :</td>
-        <td><input type="text" th:field="*{last_name}" placeholder="Enter last name"></td>
-    </tr>
-    <tr><td>Date Of Birth :</td>
-        <td><input type="date" th:field="*{date_of_birth}" placeholder="select date of birth"></td>
-    </tr>
-    <tr><td>Nationality : </td>
-        <td><input type="text" th:field="*{nationality}" placeholder="nationality"></td>
-    </tr>
-    <tr><td>City :</td>
-        <td><input type="text" th:field="*{city}" placeholder="Enter city"></td>
-    </tr>
-    <tr><td>Percentage Of Fitness :</td>
-        <td><input type="number" th:field="*{percentage_of_fitness}" placeholder="Enter percentage of fitness"></td>
-    </tr>
-    <tr><td>Is Bowler : </td>
-        <td><input type="text" th:field="*{is_bowler}" placeholder="Enter Roll Number"></td>
-    </tr>
-    <tr><td>Is Batsman : </td>
-        <td><input type="text" th:field="*{is_batsman}" placeholder="Enter Roll Number"></td>
-    </tr>
-    <tr><td>Is All Rounder :</td>
-        <td> <input type="text" th:field="*{is_all_rounder}" placeholder="Enter Roll Number"></td>
-    </tr>
-    <tr><td>Is Wicket Keeper :</td>
-        <td> <input type="text" th:field="*{is_wicket_keeper}" placeholder="Enter Roll Number"></td>
-    </tr>
+
+        <tr><td><input type="number" th:field="*{team_id}"></td></tr>
+        <tr><td><input type="text" th:field="*{team_name}"></td></tr>
+        <tr><td><input type="text" th:field="*{team_description}"></td></tr>
+
+
+
+
 
 <!--    <tr>-->
 <!--        <td>Team List :</td>-->
 <!--        <td>-->
-<!--            <select name="listOfteam">-->
-<!--                <option th:each="l:${teamList}" th:value="${l.team_id}" th:text="${l.team_id}" >-->
+<!--            <select name="listOfTeam">-->
+<!--                <option th:each="teamList:${team}" th:value="${teamList.team_id}" th:text="${teamList.team_id}" >-->
 <!--            </select>-->
 <!--        </td>-->
 <!--    </tr>-->
-        <tr><td><input type="number" th:field="*{team.team_id}"></td></tr>
+
+<!--        <tr>-->
+<!--            <td>Player List :</td>-->
+<!--            <td>-->
+<!--                <select name="listOfPlayer">-->
+<!--                    <option th:each="playerlist:${players}" th:value="${playerlist.getPlayer_id()}" th:text="${playerlist.getPlayer_id()}" >-->
+<!--                </select>-->
+<!--            </td>-->
+<!--        </tr>-->
+
+
+<!--        <tr><td><input type="number" th:field="*{team.team_id}"></td></tr>-->
+<!--        <tr><td><input type="text" th:field="*{}"></td></tr>-->
     <tr><td><input type="submit" name="submit"></td></tr>
     </table>
 </form>

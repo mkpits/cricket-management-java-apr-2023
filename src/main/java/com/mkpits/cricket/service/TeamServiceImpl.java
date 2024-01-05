@@ -32,4 +32,10 @@ public class TeamServiceImpl implements TeamService{
         Optional<Team> teamOptional =teamRepository.findById(teamId);
             return teamOptional.get();
     }
+
+    @Override
+    public void deleteTeam(Integer teamId) {
+        Team team = teamRepository.findById(teamId).get();
+        teamRepository.delete(team);
+    }
 }

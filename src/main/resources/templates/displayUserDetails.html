@@ -24,9 +24,10 @@
             <th>City</th>
             <th>State</th>
             <th>Country</th>
-            <th>Action</th>
+            <th>Update</th>
+            <th>Delete</th>
         </tr>
-        <tr th:each="users:${userdetail}">
+        <tr th:each="users:${userdetails}">
             <td th:text="${users.userId}"></td>
             <td th:text="${users.firstName}"></td>
             <td th:text="${users.lastName}"></td>
@@ -39,8 +40,14 @@
             <td th:text="${users.address.city.state.stateName}"></td>
             <td th:text="${users.address.city.state.country.countryName}"></td>
             <td>
-                <a th:href="@{/userDetails/updateUserDetails(userId=${users.getUserId()})}">
+                <a th:href="@{/userDetails/updateUserDetails(user_id=${users.userId})}">
                     <i class="fa-solid fa-pen-to-square btn btn-success"></i>
+                </a>
+            </td>
+            <td>
+                <a th:href="@{/userDetails/deleteUserDetail(user_id=${users.userId})}"
+                   onclick="if(!(confirm('Are you sure you want to delete this user?'))) return false">
+                    <i class="fa-solid fa-trash-can btn btn-danger"></i>
                 </a>
             </td>
         </tr>

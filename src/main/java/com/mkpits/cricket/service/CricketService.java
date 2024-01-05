@@ -9,4 +9,5 @@ public interface CricketService {
     UserDetails saveDetails(UserDetails userDetails);
     List<UserDetails> findAllDetails();
     UserDetails updateRecord(Integer user_id);
+    void deleteRecord(Integer user_id);
 }

@@ -5,30 +5,46 @@ import jakarta.persistence.*;
 import java.sql.Date;
 
 @Entity
+@Table(name = "players")
 public class Players {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int player_id;
+
+    @Column(name = "first_name")
     private String first_name;
+
+    @Column(name = "last_name")
     private String last_name;
+
+    @Column(name = "date_of_birth")
     private Date date_of_birth;
+
+    @Column(name = "nationality")
     private String nationality;
+
+    @Column(name = "city")
     private String city;
+
+    @Column(name = "percentage_of_fitness")
     private double percentage_of_fitness;
+
+    @Column(name = "is_bowler")
     private String is_bowler;
+
+    @Column(name = "is_batsman")
     private String is_batsman;
+
+    @Column(name = "is_allrounder")
     private String is_all_rounder;
+
+    @Column(name = "is_wicket_keeper")
     private String is_wicket_keeper;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "team_id")
-    private Team team;
-
 
     public Players() {
     }
 
-    public Players(String first_name, String last_name, Date date_of_birth, String nationality, String city, double percentage_of_fitness, String is_bowler, String is_batsman, String is_all_rounder, String is_wicket_keeper , Team team) {
+    public Players(String first_name, String last_name, Date date_of_birth, String nationality, String city, double percentage_of_fitness, String is_bowler, String is_batsman, String is_all_rounder, String is_wicket_keeper ) {
         this.first_name = first_name;
         this.last_name = last_name;
         this.date_of_birth = date_of_birth;
@@ -39,7 +55,7 @@ public class Players {
         this.is_batsman = is_batsman;
         this.is_all_rounder = is_all_rounder;
         this.is_wicket_keeper = is_wicket_keeper;
-        this.team=team;
+
     }
 
 
@@ -131,11 +147,4 @@ public class Players {
         this.is_wicket_keeper = is_wicket_keeper;
     }
 
-    public Team getTeam() {
-        return team;
-    }
-
-    public void setTeam(Team team) {
-        this.team = team;
-    }
 }

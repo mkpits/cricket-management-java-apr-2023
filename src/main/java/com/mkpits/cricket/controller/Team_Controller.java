@@ -106,16 +106,27 @@ public class Team_Controller {
     return "teamInformation";
     }
 
+/** ------------------------ delete Teams on team id -------------------------------------- */
+
+    @GetMapping("/deleteTeam")
+    public String deleteTeam(@RequestParam("team_id") int teamId){
+        teamService.deleteTeam(teamId);
+        return "redirect:/listOfTeams";
+    }
+
 
 /** ------------------------ Allot players to the team ---------------------------------------  */
 
 
     @GetMapping("/allotPlayer")
     public String allotPlayer(Model model){
-        Players players = new Players();
-        model.addAttribute("players" , players);
-        List list = teamService.findAllTeamsList();
-        model.addAttribute("teamList" ,list);
+        Team list = new Team();
+//        List list = teamService.findAllTeamsList();
+        model.addAttribute("team" ,list);
+//        Players players = playersService.findAllPlayers();
+//        model.addAttribute("players" , players);
+
+
         return "allotTeamPlayer";
     }
 

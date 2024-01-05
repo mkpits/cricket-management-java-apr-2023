@@ -14,14 +14,16 @@ public class Team {
     private String team_description;
 
     @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "allot_team_player")
     private List<Players> playersList;
 
     public Team() {
     }
 
-    public Team(String team_name, String team_description) {
+    public Team(String team_name, String team_description , List<Players> playersList) {
         this.team_name = team_name;
         this.team_description = team_description;
+        this.playersList=playersList;
     }
 
     public int getTeam_id() {

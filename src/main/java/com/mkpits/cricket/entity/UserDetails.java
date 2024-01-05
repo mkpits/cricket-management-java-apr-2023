@@ -28,8 +28,6 @@ public class UserDetails {
     private String mobileNumber;
     @Column(name = "gender")
     private String gender;
-    @Column(name = "is_deleted")
-    private boolean isDeleted;
     @Column(name = "created_by")
     private String created_By;
     @Column(name = "updated_by")
@@ -47,14 +45,13 @@ public class UserDetails {
     public UserDetails() {
     }
 
-    public UserDetails(String firstName, String lastName, String email, Date dateOfBirth, String mobileNumber, String gender, boolean isDeleted, String created_By, String updated_By,Address address) {
+    public UserDetails(String firstName, String lastName, String email, Date dateOfBirth, String mobileNumber, String gender, String created_By, String updated_By,Address address) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.dateOfBirth = dateOfBirth;
         this.mobileNumber = mobileNumber;
         this.gender = gender;
-        this.isDeleted = isDeleted;
         this.created_By = created_By;
         this.updated_By = updated_By;
         this.address=address;
@@ -117,13 +114,6 @@ public class UserDetails {
         this.gender = gender;
     }
 
-    public boolean isDeleted() {
-        return isDeleted;
-    }
-
-    public void setDeleted(boolean deleted) {
-        isDeleted = deleted;
-    }
 
     public String getCreated_By() {
         return created_By;

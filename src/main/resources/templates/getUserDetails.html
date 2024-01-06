@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>UserDetails</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" >
+    <script src="/js/userValidation.js"></script>
     <style>
         body{
             background: linear-gradient(90deg, rgba(218,221,137,0.7764355742296919) 0%, rgb(176, 196, 222) 50%);
@@ -16,31 +17,38 @@
         div a{
             color: darkred;
         }
+        .error{
+            color: red;
+        }
     </style>
 </head>
 <body>
 
 <div class="container col-lg-8 mb-4 py-3 px-5 text-dark main">
-    <form th:action="@{/userDetails/saveUserDetails}" method="post" th:object="${userdetails}">
+    <form th:action="@{/userDetails/saveUserDetails}" method="post" th:object="${userdetails}" onsubmit="return validateForm()">
         <fieldset>
             <legend>User Details</legend>
             <label>User Id</label>
             <input type="number" class="form-control" th:field="*{userId}" readonly>
             <br>
             <label>First Name : </label>
-            <input type="text" class="form-control" th:field="*{firstName}" placeholder="Enter first name">
+            <input type="text" class="form-control" th:field="*{firstName}" id="firstName" placeholder="Enter first name">
+            <span id="firstNameError" class="error"></span>
             <br>
             <label>Last Name : </label>
-            <input type="text" class="form-control" th:field="*{lastName}" placeholder="Enter last name">
+            <input type="text" class="form-control" th:field="*{lastName}" id="lastName" placeholder="Enter last name">
+            <span id="lastNameError" class="error"></span>
             <br>
             <label>Email : </label>
-            <input type="email" class="form-control" th:field="*{email}" placeholder="Enter email">
+            <input type="email" class="form-control" th:field="*{email}" id="email" placeholder="Enter email">
+            <span id="emailError" class="error"></span>
             <br>
             <label>Date of birth : </label>
             <input type="date" class="form-control" th:field="*{dateOfBirth}" placeholder="select date of birth">
             <br>
             <label>Mobile No : </label>
-            <input type="number" class="form-control" th:field="*{mobileNumber}" placeholder="Enter mobile number">
+            <input type="number" class="form-control" th:field="*{mobileNumber}" id="mobileNumber" placeholder="Enter mobile number">
+            <span id="mobileNumberError" class="error"></span>
             <br>
             <label>Gender : </label>
             <input type="radio"  th:field="*{gender}" th:value="Male">&nbsp;Male&nbsp;
@@ -66,18 +74,22 @@
         <fieldset>
             <legend>City Details</legend>
             <label>City</label>
-            <input type="text" class="form-control" th:field="*{address.city.cityName}" placeholder="Enter city name">
+            <input type="text" class="form-control" th:field="*{address.city.cityName}" id="city" placeholder="Enter city name">
+            <span id="cityError" class="error"></span>
             <br>
         </fieldset>
         <fieldset>
             <legend>State Details</legend>
             <label>State</label>
-            <input type="text" class="form-control" th:field="*{address.city.state.stateName}" placeholder="Enter state name">
+            <input type="text" class="form-control" th:field="*{address.city.state.stateName}" id="state" placeholder="Enter state name">
+            <span id="stateError" class="error"></span>
             <br>
         </fieldset>
         <fieldset>
             <legend>Country Details</legend>
-            <input type="text" class="form-control" th:field="*{address.city.state.country.countryName}" placeholder="Enter country name">
+            <label>Country</label>
+            <input type="text" class="form-control" th:field="*{address.city.state.country.countryName}" id="country" placeholder="Enter country name">
+            <span id="countryError" class="error"></span>
         </fieldset>
         <div align="center">
             <br>

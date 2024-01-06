@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>city form</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" >
 </head>
 <body>
     <div class="col-lg-4">
         <form th:action="@{/cities/saveCity}" method="post" th:object="${cities}">
             <label>CityId</label>
-            <input type="number" th:field="*{cityId}" class="form-control">
+            <input type="number" th:field="*{cityId}" class="form-control" readonly>
             <br>
             <label>City Name</label>
             <input type="text" th:field="*{cityName}" class="form-control">

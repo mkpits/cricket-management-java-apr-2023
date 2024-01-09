@@ -1,5 +1,7 @@
 package com.mkpits.cricket.service;
 
+import com.mkpits.cricket.entity.Players;
+import com.mkpits.cricket.repository.PlayersRepository;
 import com.mkpits.cricket.repository.TeamRepository;
 import com.mkpits.cricket.entity.Team;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,7 @@ import java.util.Optional;
 @Service
 public class TeamServiceImpl implements TeamService{
     private TeamRepository teamRepository;
+    private PlayersRepository playersRepository;
     @Autowired
 
     public TeamServiceImpl(TeamRepository teamRepository) {
@@ -38,4 +41,6 @@ public class TeamServiceImpl implements TeamService{
         Team team = teamRepository.findById(teamId).get();
         teamRepository.delete(team);
     }
+
+
 }

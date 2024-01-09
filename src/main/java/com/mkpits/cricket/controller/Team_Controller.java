@@ -115,21 +115,25 @@ public class Team_Controller {
     }
 
 
-/** ------------------------ Allot players to the team ---------------------------------------  */
+    /** ------------------------ Allot players to the team ---------------------------------------  */
 
-
-    @GetMapping("/allotPlayer")
-    public String allotPlayer(Model model){
-        Team list = new Team();
-//        List list = teamService.findAllTeamsList();
-        model.addAttribute("team" ,list);
-//        Players players = playersService.findAllPlayers();
-//        model.addAttribute("players" , players);
-
-
-        return "allotTeamPlayer";
+    @PostMapping("/insertTeamsAndPlayers")
+    public String saveTeamsAndPlayers(@ModelAttribute("team") Team newTeams ,@RequestParam("selectedPlayers") List<Integer> player_ids){
+        List<Players> selectedPlayers = playersService.findByPlayer_id(player_ids);
+        newTeams.setPlayersList(selectedPlayers);
+        teamService.saveTeam(newTeams);
+        System.out.println(newTeams);
+        return "redirect:/listOfTeams";
     }
 
+    @GetMapping("/allotTeamAndPlayer")
+    public String allot(@RequestParam("team_id") int teamId, Model model){
+        Team team = teamService.updateTeam(teamId);
+        model.addAttribute("team" , team);
+        List<Players> playersList=playersService.findAllPlayers();
+        model.addAttribute("listOfPlayers",playersList);
+        return "allotTeamPlayer";
+    }
 
 
 

@@ -14,7 +14,9 @@ public class Team {
     private String team_description;
 
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "allot_team_player")
+    @JoinTable(name = "allot_team_player",
+            joinColumns = @JoinColumn(name = "team_id"),
+            inverseJoinColumns = @JoinColumn(name = "player_id"))
     private List<Players> playersList;
 
     public Team() {

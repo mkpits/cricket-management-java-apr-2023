@@ -41,10 +41,15 @@ public class Players {
     @Column(name = "is_wicket_keeper")
     private String is_wicket_keeper;
 
+//    @ManyToOne
+//    @JoinTable(name = "allot_team_player",
+//            joinColumns= @JoinColumn(name = "team_id"))
+//    private Team team;
+
     public Players() {
     }
 
-    public Players(String first_name, String last_name, Date date_of_birth, String nationality, String city, double percentage_of_fitness, String is_bowler, String is_batsman, String is_all_rounder, String is_wicket_keeper ) {
+    public Players(String first_name, String last_name, Date date_of_birth, String nationality, String city, double percentage_of_fitness, String is_bowler, String is_batsman, String is_all_rounder, String is_wicket_keeper) {
         this.first_name = first_name;
         this.last_name = last_name;
         this.date_of_birth = date_of_birth;
@@ -55,6 +60,7 @@ public class Players {
         this.is_batsman = is_batsman;
         this.is_all_rounder = is_all_rounder;
         this.is_wicket_keeper = is_wicket_keeper;
+
 
     }
 
@@ -147,4 +153,11 @@ public class Players {
         this.is_wicket_keeper = is_wicket_keeper;
     }
 
+//    public Team getTeam() {
+//        return team;
+//    }
+//
+//    public void setTeam(Team team) {
+//        this.team = team;
+//    }
 }

@@ -27,51 +27,6 @@ public class Team_Controller {
         this.teamService=teamService;
     }
 
-/** --------------------------- Admin Login form --------------------------- */
-
-    @GetMapping("/adminLoginForm")
-    public String admin_Login(){
-        return "adminLoginForm";
-    }
-
-/** --------------------------- Menu page call when we that end point of "/Dashboard" --------------------------- */
-
-    @GetMapping("/Dashboard")
-    public  String menu_Page(){
-        return "menuPage";
-    }
-
-/** ------------- find list of players ----------------- */
-
-    @GetMapping("/listOfPlayers")
-    public String findListOfPlayers(Model model){
-        List<Players> playersList=playersService.findAllPlayers();
-        model.addAttribute("listOfPlayers",playersList);
-        return "displayPlayersList";
-    }
-
-/** ---------------------------- save method for register players ------------------------- **/
-
-    @GetMapping("/Players")
-    public String playersInfo(Model model){
-        Players players = new Players();
-        model.addAttribute("players" , players);
-        return "registerPlayersInformation";
-    }
-
-    @PostMapping("/Save")
-    public String save(@ModelAttribute("players") Players newPlayers ){
-        playersService.save(newPlayers);
-        return "redirect:/listOfPlayers";
-    }
-
-/** -------------------------- update player -------------------------------------------- **/
-//    @GetMapping("/updatePlayer")
-//    public String updatePlayer(@RequestParam("player_id") int playerId, Model model) {
-//        Players players = playersService.updatePlayers(playerId);
-//        model.addAttribute("players", players);
-//        return "registerPlayersInformation";
-//    }
 
 /** ------------- find list of Teams ----------------- */
 
@@ -115,21 +70,25 @@ public class Team_Controller {
     }
 
 
-/** ------------------------ Allot players to the team ---------------------------------------  */
+    /** ------------------------ Allot players to the team ---------------------------------------  */
 
-
-    @GetMapping("/allotPlayer")
-    public String allotPlayer(Model model){
-        Team list = new Team();
-//        List list = teamService.findAllTeamsList();
-        model.addAttribute("team" ,list);
-//        Players players = playersService.findAllPlayers();
-//        model.addAttribute("players" , players);
-
-
-        return "allotTeamPlayer";
+    @PostMapping("/insertTeamsAndPlayers")
+    public String saveTeamsAndPlayers(@ModelAttribute("team") Team newTeams ,@RequestParam("selectedPlayers") List<Integer> player_ids){
+        List<Players> selectedPlayers = playersService.findByPlayer_id(player_ids);
+        newTeams.setPlayersList(selectedPlayers);
+        teamService.saveTeam(newTeams);
+        System.out.println(newTeams);
+        return "redirect:/listOfTeams";
     }
 
+    @GetMapping("/allotTeamAndPlayer")
+    public String allot(@RequestParam("team_id") int teamId, Model model){
+        Team team = teamService.updateTeam(teamId);
+        model.addAttribute("team" , team);
+        List<Players> playersList=playersService.findAllPlayers();
+        model.addAttribute("listOfPlayers",playersList);
+        return "allotTeamPlayer";
+    }
 
 
 

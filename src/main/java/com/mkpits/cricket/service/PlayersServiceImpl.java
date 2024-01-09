@@ -38,5 +38,10 @@ public class PlayersServiceImpl implements PlayersService {
        return playersOptional.get();
     }
 
+    @Override
+    public List<Players> findByPlayer_id(List<Integer> player_ids) {
+        return playersRepository.findAllById(player_ids);
+    }
+
 
 }

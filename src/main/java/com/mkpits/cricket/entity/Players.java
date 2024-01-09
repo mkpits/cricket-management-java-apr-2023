@@ -41,6 +41,9 @@ public class Players {
     @Column(name = "is_wicket_keeper")
     private String is_wicket_keeper;
 
+    @Column(name = "is_alloted")
+    private int is_alloted;
+
 //    @ManyToOne
 //    @JoinTable(name = "allot_team_player",
 //            joinColumns= @JoinColumn(name = "team_id"))
@@ -49,7 +52,7 @@ public class Players {
     public Players() {
     }
 
-    public Players(String first_name, String last_name, Date date_of_birth, String nationality, String city, double percentage_of_fitness, String is_bowler, String is_batsman, String is_all_rounder, String is_wicket_keeper) {
+    public Players(String first_name, String last_name, Date date_of_birth, String nationality, String city, double percentage_of_fitness, String is_bowler, String is_batsman, String is_all_rounder, String is_wicket_keeper,int is_alloted) {
         this.first_name = first_name;
         this.last_name = last_name;
         this.date_of_birth = date_of_birth;
@@ -60,6 +63,7 @@ public class Players {
         this.is_batsman = is_batsman;
         this.is_all_rounder = is_all_rounder;
         this.is_wicket_keeper = is_wicket_keeper;
+        this.is_alloted=is_alloted;
 
 
     }
@@ -160,4 +164,22 @@ public class Players {
 //    public void setTeam(Team team) {
 //        this.team = team;
 //    }
+
+
+    @Override
+    public String toString() {
+        return
+                "player_id=" + player_id +
+                ", first_name='" + first_name + '\'' +
+                ", last_name='" + last_name + '\''+
+                ", date_of_birth=" + date_of_birth +
+                ", nationality='" + nationality + '\'' +
+                ", city='" + city + '\'' +
+                ", percentage_of_fitness=" + percentage_of_fitness +
+                ", is_bowler='" + is_bowler + '\'' +
+                ", is_batsman='" + is_batsman + '\'' +
+                ", is_all_rounder='" + is_all_rounder + '\'' +
+                ", is_wicket_keeper='" + is_wicket_keeper + '\'' ;
+
+    }
 }

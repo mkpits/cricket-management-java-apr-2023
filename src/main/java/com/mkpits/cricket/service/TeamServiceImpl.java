@@ -42,5 +42,8 @@ public class TeamServiceImpl implements TeamService{
         teamRepository.delete(team);
     }
 
-
+    @Override
+    public Team findPlayersList(Integer team_id) {
+        return teamRepository.findById(team_id).get();
+    }
 }

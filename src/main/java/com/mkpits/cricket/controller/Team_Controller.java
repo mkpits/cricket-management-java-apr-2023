@@ -75,7 +75,8 @@ public class Team_Controller {
     @PostMapping("/insertTeamsAndPlayers")
     public String saveTeamsAndPlayers(@ModelAttribute("team") Team newTeams ,@RequestParam("selectedPlayers") List<Integer> player_ids){
         List<Players> selectedPlayers = playersService.findByPlayer_id(player_ids);
-        newTeams.setPlayersList(selectedPlayers);
+        newTeams.
+                setPlayersList(selectedPlayers);
         teamService.saveTeam(newTeams);
         System.out.println(newTeams);
         return "redirect:/listOfTeams";
@@ -88,6 +89,15 @@ public class Team_Controller {
         List<Players> playersList=playersService.findAllPlayers();
         model.addAttribute("listOfPlayers",playersList);
         return "allotTeamPlayer";
+    }
+
+    @GetMapping("/teamPlayersList")
+    public  String team_Player_List(@RequestParam("team_id") int teamId,Model model){
+        Team team=teamService.findPlayersList(teamId);
+//        playersService.findAllPlayers();
+        model.addAttribute("team" , team);
+
+        return "team_Players_List_Info";
     }
 
 

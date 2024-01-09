@@ -17,6 +17,7 @@
         <th>Update</th>
         <th>Delete</th>
         <th>Add Players</th>
+        <th>View Details</th>
 
 
     </tr>
@@ -27,6 +28,7 @@
         <td><a th:href="@{/updateTeam(team_id=${team.team_id})}" class="btn btn-success btn-sm">Update</a></td>
         <td><a th:href="@{/deleteTeam(team_id=${team.team_id})}" class="btn btn-danger btn-sm">delete</a></td>
         <td><a th:href="@{/allotTeamAndPlayer(team_id=${team.team_id})}" class="btn btn-primary btn-sm">+ Add Players</a></td>
+        <td><a th:href="@{/teamPlayersList(team_id=${team.team_id})}" class="btn btn-info btn-sm">View Players</a></td>
 
     </tr>
 </table>

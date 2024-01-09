@@ -12,4 +12,6 @@ public interface TeamService {
 
     Team updateTeam(Integer teamId);
     void deleteTeam(Integer teamId);
+
+    Team findPlayersList( Integer team_id);
 }

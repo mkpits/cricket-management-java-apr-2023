@@ -13,7 +13,7 @@ public class Team {
     private String team_name;
     private String team_description;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
     @JoinTable(name = "allot_team_player",
             joinColumns = @JoinColumn(name = "team_id"),
             inverseJoinColumns = @JoinColumn(name = "player_id"))
@@ -60,5 +60,13 @@ public class Team {
         this.playersList = playersList;
     }
 
-
+    @Override
+    public String toString() {
+        return "Team{" +
+                "team_id=" + team_id +
+                ", team_name='" + team_name + '\'' +
+                ", team_description='" + team_description + '\'' +
+                ", playersList=" + playersList +
+                '}';
+    }
 }

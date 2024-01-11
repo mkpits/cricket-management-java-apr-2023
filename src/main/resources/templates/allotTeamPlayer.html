@@ -9,12 +9,12 @@
 <body>
 
 <form th:object="${team}" th:action="@{/insertTeamsAndPlayers}" method="post">
-    <table class="table p-2  table-striped table-hover table-border ">
+    <table class="table p-2  table-striped table-hover table-border " th:border="1px">
 
         <tr>
-            <td><input type="number" th:field="*{team_id}" disabled></td>
-            <td><input type="text" th:field="*{team_name}" disabled></td>
-            <td><input type="text" th:field="*{team_description}" disabled></td>
+            <td><input type="number" th:field="*{team_id}" ></td>
+            <td><input type="text" th:field="*{team_name}" ></td>
+            <td><input type="text" th:field="*{team_description}" ></td>
         </tr>
 
     </table>
@@ -23,7 +23,7 @@
     <!--        <option th:each="players:${listOfPlayers}" th:value="${team.getPlayersList()}" th:text="${team.getPlayersList()}" ></option>-->
     <!--    </select>-->
 
-    <table class="table p-2  table-striped table-hover table-border ">
+    <table class="table p-2  table-striped table-hover text-center" border="2">
 
         <tr>
             <th>Select<th>
@@ -42,7 +42,9 @@
         </tr>
 
         <tr th:each="player:${listOfPlayers}">
-            <td><input type="checkbox" name="selectedPlayers" th:value="${player.player_id}" /></td>
+            <td colspan="2">
+                <input type="checkbox" name="selectedPlayers" th:value="${player.player_id}" />
+            </td>
             <td th:text="${player.player_id}"></td>
             <td th:text="${player.first_name}"></td>
             <td th:text="${player.last_name}"></td>

@@ -33,11 +33,11 @@ public class PlayersServiceImpl implements PlayersService {
         return playersRepository.save(players);
     }
 
-    @Override
-    public Players updatePlayers(Integer playerId) {
-       Optional<Players> playersOptional =playersRepository.findById(playerId);
-       return playersOptional.get();
-    }
+//    @Override
+//    public Players updatePlayers(Players players) {
+//     return playersRepository.save(players);
+//
+//    }
 
     @Override
     public List<Players> findByPlayer_id(List<Integer> player_ids) {
@@ -48,5 +48,10 @@ public class PlayersServiceImpl implements PlayersService {
     @Override
     public List<Players> findPlayersWithIsAllotedZero() {
         return playersRepository.findPlayersWithIsAllotedZero();
+    }
+
+    @Override
+    public void deleteSelectedPlayersTForTeam(List<Players> playersList) {
+         playersRepository.deleteAll(playersList);
     }
 }

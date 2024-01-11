@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -65,8 +66,17 @@ public class Team_Controller {
 /** ------------------------ delete Teams on team id -------------------------------------- */
 
     @GetMapping("/deleteTeam")
-    public String deleteTeam(@RequestParam("team_id") int teamId){
-        teamService.deleteTeam(teamId);
+    public String deleteTeamOfPlayersList(@RequestParam("team_id") int teamId){
+        Team team=teamService.findPlayersList(teamId);
+        List<Players> getPlayersList=team.getPlayersList();
+
+        for(Players players:getPlayersList){
+            players.setIs_alloted(0);
+        }
+        team.setPlayersList(null);
+        teamService.updateTeamAsNull(team);
+
+        System.out.println( " team after deleting = " +team);
         return "redirect:/listOfTeams";
     }
 
@@ -108,6 +118,8 @@ public class Team_Controller {
 
         return "team_Players_List_Info";
     }
+
+
 
 
 

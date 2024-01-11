@@ -46,4 +46,14 @@ public class TeamServiceImpl implements TeamService{
     public Team findPlayersList(Integer team_id) {
         return teamRepository.findById(team_id).get();
     }
+
+    @Override
+    public Team findByTeamId(Integer team_id) {
+        return teamRepository.findById(team_id).get();
+    }
+
+    @Override
+    public Team updateTeamAsNull(Team team) {
+        return teamRepository.save(team);
+    }
 }

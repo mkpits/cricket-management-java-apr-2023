@@ -1,6 +1,7 @@
 package com.mkpits.cricket.controller;
 
 import com.mkpits.cricket.entity.MatchDetails;
+import com.mkpits.cricket.entity.MatchVenue;
 import com.mkpits.cricket.service.MatchDetailService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,15 +16,21 @@ import java.util.List;
 public class ScheduleMatchController {
     private MatchDetailService matchDetailService;
 
-    public ScheduleMatchController(MatchDetailService matchDetailService){
-        this.matchDetailService=matchDetailService;
-    }
+//    private VenueService venueService;
+
+//    public ScheduleMatchController(MatchDetailService matchDetailService,VenueService venueService){
+//        this.matchDetailService=matchDetailService;
+//        this.venueService=venueService;
+//    }
+
+    public MatchDetails md;
+
 
     //Display Matches
     @GetMapping("/matches")
     public String matchSchedule(Model model){
         List<MatchDetails> matchList=matchDetailService.findAllMatches();
-        model.addAttribute("model",matchList);
+        model.addAttribute("listModel",matchList);
         return "matchSchedule";
     }
 
@@ -32,6 +39,8 @@ public class ScheduleMatchController {
     public String add(Model model){
         MatchDetails matchDetails=new MatchDetails();
         model.addAttribute("match",matchDetails);
+//        List<MatchVenue> list=venueService.showAllVenues();
+//        model.addAttribute("allVenues",list);
         return "addmatch";
     }
 

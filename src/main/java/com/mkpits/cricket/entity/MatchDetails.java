@@ -2,6 +2,7 @@ package com.mkpits.cricket.entity;
 
 import jakarta.persistence.*;
 import java.sql.Date;
+import java.sql.Time;
 import java.sql.Timestamp;
 
 @Entity
@@ -15,20 +16,27 @@ public class MatchDetails {
     private String team1;
     private String team2;
     private Date match_date;
-    private Timestamp match_time;
-    private String match_venue;
+    private Time match_time;
+//    private int venue_id;
+
+    @ManyToOne(fetch=FetchType.LAZY,cascade = CascadeType.ALL)
+    @JoinColumn(name = "venue_id")
+    private MatchVenue matchVenue ;
+
 
     public MatchDetails() {
     }
 
-    public MatchDetails(String match_name, String team1, String team2, Date match_date, Timestamp match_time, String match_venue) {
+
+    public MatchDetails(String match_name, String team1, String team2, Date match_date, Time match_time, MatchVenue matchVenue) {
         this.match_name = match_name;
         this.team1 = team1;
         this.team2 = team2;
         this.match_date = match_date;
         this.match_time = match_time;
-        this.match_venue = match_venue;
+        this.matchVenue = matchVenue;
     }
+
 
 //    ---------------getter---------------
 
@@ -52,15 +60,18 @@ public class MatchDetails {
         return match_date;
     }
 
-    public Timestamp getMatch_time() {
+    public Time getMatch_time() {
         return match_time;
     }
 
-    public String getMatch_venue() {
-        return match_venue;
+    public MatchVenue getMatchVenue() {
+        return matchVenue;
     }
 
-    //    ---------------setter---------------
+
+
+
+//    ---------------setter---------------
 
     public void setMatch_id(int match_id) {
         this.match_id = match_id;
@@ -82,12 +93,12 @@ public class MatchDetails {
         this.match_date = match_date;
     }
 
-    public void setMatch_time(Timestamp match_time) {
+    public void setMatch_time(Time match_time) {
         this.match_time = match_time;
     }
 
-    public void setMatch_venue(String match_venue) {
-        this.match_venue = match_venue;
+    public void setMatchVenue(MatchVenue matchVenue) {
+        this.matchVenue = matchVenue;
     }
 
     @Override
@@ -99,7 +110,7 @@ public class MatchDetails {
                 ", team2='" + team2 + '\'' +
                 ", match_date=" + match_date +
                 ", match_time=" + match_time +
-                ", match_venue='" + match_venue + '\'' +
+                ", matchVenue=" + matchVenue +
                 '}';
     }
 }

@@ -42,10 +42,13 @@ public class UserDetails {
     @JoinColumn(name = "address_id")
     private Address address;
 
+    @OneToOne(mappedBy ="userDetails", cascade = CascadeType.ALL)
+    private UserLogin userLogin;
+
     public UserDetails() {
     }
 
-    public UserDetails(String firstName, String lastName, String email, Date dateOfBirth, String mobileNumber, String gender, String created_By, String updated_By,Address address) {
+    public UserDetails(String firstName, String lastName, String email, Date dateOfBirth, String mobileNumber, String gender, String created_By, String updated_By,Address address,UserLogin userLogin) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -55,6 +58,7 @@ public class UserDetails {
         this.created_By = created_By;
         this.updated_By = updated_By;
         this.address=address;
+        this.userLogin=userLogin;
     }
 
     public int getUserId() {
@@ -153,5 +157,13 @@ public class UserDetails {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    public UserLogin getUserLogin() {
+        return userLogin;
+    }
+
+    public void setUserLogin(UserLogin userLogin) {
+        this.userLogin = userLogin;
     }
 }

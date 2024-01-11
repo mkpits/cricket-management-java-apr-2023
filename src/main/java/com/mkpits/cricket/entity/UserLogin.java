@@ -1,34 +1,26 @@
 package com.mkpits.cricket.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "user_login")
 public class UserLogin {
     @Id
-    @Column(name = "user_id")
-    private int userId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int role_id;
     private String username;
     private String password;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
+    private UserDetails userDetails;
 
     public UserLogin(){
     }
 
-    public UserLogin(int userId, String username, String password) {
-        this.userId = userId;
+    public UserLogin(String username, String password, UserDetails userDetails) {
         this.username = username;
         this.password = password;
-    }
-
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
+        this.userDetails=userDetails;
     }
 
     public String getUsername() {
@@ -45,5 +37,21 @@ public class UserLogin {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public UserDetails getUserDetails() {
+        return userDetails;
+    }
+
+    public void setUserDetails(UserDetails userDetails) {
+        this.userDetails = userDetails;
+    }
+
+    public int getRole_id() {
+        return role_id;
+    }
+
+    public void setRole_id(int role_id) {
+        this.role_id = role_id;
     }
 }

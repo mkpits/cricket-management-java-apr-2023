@@ -67,6 +67,9 @@ public class Players {
 
 
     }
+    public Players(int is_alloted){
+        this.setIs_alloted(is_alloted);
+    }
 
 
     public int getPlayer_id() {
@@ -157,7 +160,15 @@ public class Players {
         this.is_wicket_keeper = is_wicket_keeper;
     }
 
-//    public Team getTeam() {
+    public int getIs_alloted() {
+        return is_alloted;
+    }
+
+    public void setIs_alloted(int is_alloted) {
+        this.is_alloted = is_alloted;
+    }
+
+    //    public Team getTeam() {
 //        return team;
 //    }
 //

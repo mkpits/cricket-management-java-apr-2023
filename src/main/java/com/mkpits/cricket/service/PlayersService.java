@@ -10,4 +10,6 @@ public interface PlayersService {
  Players save(Players players);
  List<Players> findByPlayer_id(List<Integer> player_ids);
  Players updatePlayers(Integer playerId);
+ List<Players> findPlayersWithIsAllotedZero();
+
 }

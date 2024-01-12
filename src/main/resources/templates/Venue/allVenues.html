@@ -19,14 +19,10 @@
         <tr>
             <td>venue_id</td>
             <td>venue</td>
-            <td>Update</td>
-            <td>Delete</td>
         </tr>
         <tr th:each="value:${venueModel}">
             <td th:text="${value.venue_id}"></td>
             <td th:text="${value.venue}"></td>
-            <td> <button type="button" class="btn btn-primary" >Update</button> </td>
-            <td><button type="button" class="btn btn-danger" >Delete</button></td>
         </tr>
     </table>
 </div>

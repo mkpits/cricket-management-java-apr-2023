@@ -3,6 +3,7 @@ package com.mkpits.cricket.controller;
 import com.mkpits.cricket.entity.MatchDetails;
 import com.mkpits.cricket.entity.MatchVenue;
 import com.mkpits.cricket.service.MatchDetailService;
+import com.mkpits.cricket.service.VenueService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,12 +17,12 @@ import java.util.List;
 public class ScheduleMatchController {
     private MatchDetailService matchDetailService;
 
-//    private VenueService venueService;
+    private VenueService venueService;
 
-//    public ScheduleMatchController(MatchDetailService matchDetailService,VenueService venueService){
-//        this.matchDetailService=matchDetailService;
-//        this.venueService=venueService;
-//    }
+    public ScheduleMatchController(MatchDetailService matchDetailService,VenueService venueService){
+        this.matchDetailService=matchDetailService;
+        this.venueService=venueService;
+    }
 
     public MatchDetails md;
 
